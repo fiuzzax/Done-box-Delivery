@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Done Box - Delivery</title>
+    <link rel="stylesheet" href="src/css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header-custom">
+        <div class="logo-wrapper">
+            <img src="src/img/done-box-logo.jpeg" alt="Logo Done Box" class="logo-img">
+        </div>
+        <h1 class="titulo-loja">Done Box</h1>
+        <p class="subtitulo-loja">Massas do seu jeito 🍝</p>
+        
+        <div class="status-container">
+            <button id="btn-status" class="status-badge" onclick="abrirModalHorarios()">
+                Carregando... 
+            </button>
+        </div>
+
+        <a href="https://www.instagram.com/donebox_1/" target="_blank" class="btn-insta-header">
+            <i class="fab fa-instagram"></i> Siga nosso Instagram
+        </a>
+    </header>
+
+    <main class="container">
+        <h2 class="titulo-secao">Massas</h2>
+        <p class="subtitulo-secao">Monte do seu jeito</p>
+
+        <div class="menu-lista">
+            <div class="produto-item" data-categoria="massa">
+                <div class="produto-info">
+                    <h3>Calabresa</h3>
+                    <p class="desc">Deliciosa calabresa com molho a sua Escolha</p>
+                    <span class="preco">R$ 26,99</span>
+                </div>
+                <div class="produto-img">
+                    <img src="/src/img/calabresa.png" alt="Calabresa">
+                    <button class="btn-add"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="produto-item" data-categoria="massa">
+                <div class="produto-info">
+                    <h3>Frango</h3>
+                    <p class="desc">frangos temperados com molho a sua Escolha.</p>
+                    <span class="preco">R$ 26,99</span>
+                </div>
+                <div class="produto-img">
+                    <img src="/src/img/frango.png" alt="Frango">
+                    <button class="btn-add"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="produto-item" data-categoria="massa">
+                <div class="produto-info">
+                    <h3>Carne Moída</h3>
+                    <p class="desc">Carne moída temperada com molho a sua Escolha.</p>
+                    <span class="preco">R$ 26,99</span>
+                </div>
+                <div class="produto-img">
+                    <img src="/src/img/carne-moida.png" alt="Carne Moída">
+                    <button class="btn-add"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="produto-item" data-categoria="massa">
+                <div class="produto-info">
+                    <h3>Carne de Sol</h3>
+                    <p class="desc">Carne de sol temperada com molho a sua Escolha.</p>
+                    <span class="preco">R$ 30,99</span>
+                </div>
+                <div class="produto-img">
+                    <img src="/src/img/carne-sol.png" alt="Carne de Sol">
+                    <button class="btn-add"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="produto-item" data-categoria="massa">
+                <div class="produto-info">
+                    <h3>Camarão</h3>
+                    <p class="desc">Camarões com molho a sua Escolha</p>
+                    <span class="preco">R$ 30,99</span>
+                </div>
+                <div class="produto-img">
+                    <img src="src/img/camarão.png" alt="Camarão">
+                    <button class="btn-add"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="titulo-secao" style="margin-top: 30px;">Bebidas</h2>
+        <div class="menu-lista">
+            <div class="produto-item" data-categoria="bebida">
+                <div class="produto-info">
+                    <h3>Coca-Cola Lata</h3>
+                    <p class="desc">350ml, bem gelada.</p>
+                    <span class="preco">R$ 6,00</span>
+                </div>
+                <div class="produto-img">
+                    <img src="/src/img/cola-cola-lata-350ml.png" alt="Coca-Cola">
+                    <button class="btn-add"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="produto-item" data-categoria="bebida">
+                <div class="produto-info">
+                    <h3>São Geraldo</h3>
+                    <p class="desc">O sabor do Nordeste, 200ml.</p>
+                    <span class="preco">R$ 4,00</span>
+                </div>
+                <div class="produto-img">
+                    <img src="/src/img/sao-geraldo-pet-200ml.png" alt="São Geraldo">
+                    <button class="btn-add"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="carrinho-bar">
+        <div class="carrinho-info">
+            <p>Meu Pedido</p>
+            <span id="itens-carrinho">0 itens</span>
+        </div>
+        <div class="carrinho-total">
+            <span>Total: R$ 0,00</span>
+            <button class="btn-ver-pedido">Ver <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </footer>
+
+    <div id="modal-produto" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-titulo">Adicionar ao Pedido</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                
+                <div id="secoes-montagem">
+                    <section class="grupo-opcao">
+                        <h4>1. Escolha a Massa <span class="badge-obrigatorio">Obrigatório</span></h4>
+                        <div class="opcoes-lista">
+                            <label class="radio-item"><input type="radio" name="massa" value="Espaguete"><div class="radio-info"><span class="radio-nome">Espaguete</span><span class="radio-desc"> Fios longos. 🍝</span></div></label>
+                            <label class="radio-item"><input type="radio" name="massa" value="Penne"><div class="radio-info"><span class="radio-nome">Penne</span><span class="radio-desc"> Tubinhos curtos.</span></div></label>
+                            <label class="radio-item"><input type="radio" name="massa" value="Fettuccine"><div class="radio-info"><span class="radio-nome"> Fettuccine</span><span class="radio-desc"> Fitas achatadas.</span></div></label>
+                        </div>
+                    </section>
+                    
+                    <section class="grupo-opcao">
+                        <h4>2. Escolha o Molho <span class="badge-obrigatorio">Obrigatório</span></h4>
+                        <div class="opcoes-lista">
+                            <div class="radio-item-complexo">
+                                <label class="radio-principal"><input type="radio" name="molho" value="Branco"><span class="radio-nome">Molho Branco</span></label>
+                                <select class="select-qtd" disabled><option value="Normal">Normal</option><option value="Pouco">Pouco</option><option value="Muito">Muito</option></select>
+                            </div>
+                            <div class="radio-item-complexo">
+                                <label class="radio-principal"><input type="radio" name="molho" value="Vermelho"><span class="radio-nome">Molho Vermelho</span></label>
+                                <select class="select-qtd" disabled><option value="Normal">Normal</option><option value="Pouco">Pouco</option><option value="Muito">Muito</option></select>
+                            </div>
+                            <div class="radio-item-complexo">
+                                <label class="radio-principal"><input type="radio" name="molho" value="Misto"><span class="radio-nome">Molho Misto</span></label>
+                                <select class="select-qtd" disabled><option value="Normal">Normal</option><option value="Pouco">Pouco</option><option value="Muito">Muito</option></select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="grupo-opcao">
+                        <h4>3. Escolha 4 Ingredientes <span class="badge-gratis">Grátis</span></h4>
+                        <p class="aviso-selecao">A partir do 5º item será cobrado + R$ 2,00</p>
+                        <div class="ingredientes-grid">
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Bacon"> Bacon</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Milho Verde"> Milho Verde</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Ovo de Codorna"> Ovo</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Azeitona"> Azeitona</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Brócolis"> Brócolis</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Alho Frito"> Alho</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Batata Palha"> Batata</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Queijo Coalho"> Queijo</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Presunto"> Presunto</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Tomate"> Tomate</label>
+                            <label class="check-item"><input type="checkbox" name="ingrediente" value="Ervilha"> Ervilha</label>
+                        </div>
+                    </section>
+                </div>
+                <section class="grupo-opcao">
+                    <h4>Observações</h4>
+                    <textarea placeholder=". . ."></textarea>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-adicionar" id="btn-adicionar-carrinho">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-horarios" class="modal-overlay" style="display: none;">
+        <div class="modal-content modal-horarios-clean" id="modal-horarios-content">
+            <div class="modal-drag-bar"></div>
+            <div class="modal-header-clean">
+                <h3><i class="far fa-clock"></i> Horários</h3>
+                <button class="close-clean" onclick="fecharModalHorarios()">×</button>
+            </div>
+            <div class="lista-horarios">
+                <div class="h-row"><span class="dia">Domingo a Quarta-Feira:</span><span class="hora fechado">Fechado</span></div>
+                <div class="h-row"><span class="dia">Quinta-Feira a Sábado:</span><span class="hora aberto">19:00 às 23:00</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-carrinho" class="modal-overlay" style="display: none;">
+        <div class="modal-content" id="modal-carrinho-content">
+            <div class="modal-drag-bar"></div>
+            <div class="modal-header">
+                <h3 class="modal-titulo">Meu Carrinho 🛒</h3>
+                <button class="modal-close" onclick="fecharCarrinho()">×</button>
+            </div>
+            <div class="modal-body" id="lista-itens-carrinho">
+                <div class="carrinho-vazio">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Seu carrinho está vazio...</p>
+                </div>
+            </div>
+            <div class="modal-footer carrinho-footer">
+                <div class="resumo-valores">
+                    <span>Total:</span>
+                    <span id="total-carrinho-modal">R$ 0,00</span>
+                </div>
+                <button class="btn-adicionar" onclick="irParaEntrega()">Continuar para Entrega</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-entrega" class="modal-overlay" style="display: none;">
+        <div class="modal-content" id="modal-entrega-content">
+            <div class="modal-drag-bar" style="display: none;"></div> 
+            <div class="modal-header">
+                <h3 class="modal-titulo">Finalizar Pedido 🚀</h3>
+                <button class="modal-close" onclick="fecharEntrega()">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="delivery-tabs">
+                    <button class="tab-btn active" id="tab-entrega" onclick="mudarTab('entrega')">
+                        <i class="fas fa-motorcycle"></i> Entrega
+                    </button>
+                    <button class="tab-btn" id="tab-retirada" onclick="mudarTab('retirada')">
+                        <i class="fas fa-store"></i> Retirada
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label>Seu Nome:</label>
+                    <input type="text" id="cliente-nome" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label>Telefone (WhatsApp):</label>
+                    <input type="tel" id="cliente-tel" placeholder="(85) 99999-9999">
+                </div>
+
+                <div id="area-endereco">
+                    <div class="divider-text">Endereço de Entrega</div>
+                    
+                    <div class="form-group">
+                        <label>CEP:</label>
+                        <input type="text" id="end-cep" placeholder="00000-000" maxlength="9">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-2">
+                            <label>Rua:</label>
+                            <input type="text" id="end-rua" placeholder="Nome da rua">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label>Nº:</label>
+                            <input type="text" id="end-numero" placeholder="123">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Bairro:</label>
+                        <input type="text" id="end-bairro" placeholder="Seu bairro">
+                    </div>
+                    <div class="form-group">
+                        <label>Ponto de Referência:</label>
+                        <input type="text" id="end-ref" placeholder="Ex: Próximo à praça...">
+                    </div>
+                </div>
+
+                <div id="area-retirada" style="display: none;">
+                    <div class="divider-text">Local de Retirada</div>
+                    <div class="card-retirada">
+                        <div class="icon-map"><i class="fas fa-store-alt"></i></div>
+                        <div class="info-retirada">
+                            <strong>Done Box</strong>
+                            <p>Rua José Carlos Gurgel Nogueira, 154<br>Vicente Pinzón - Fortaleza/CE</p>
+                            <div class="retirada-botoes">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Rua+José+Carlos+Gurgel+Nogueira,+154,+Vicente+Pinzón+-+Fortaleza/CE" target="_blank" class="btn-acao-mapa">
+                                    <i class="fas fa-map-marked-alt"></i> Maps
+                                </a>
+                                <button class="btn-acao-mapa btn-copy" onclick="copiarEndereco()">
+                                    <i class="far fa-copy"></i> Copiar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider-text">Pagamento</div>
+                <div class="pagamento-opcoes">
+                    <label class="radio-item"><input type="radio" name="pagamento" value="Pix" onclick="toggleTroco(false)"><span class="radio-nome">PIX</span></label>
+                    <label class="radio-item"><input type="radio" name="pagamento" value="Cartão" onclick="toggleTroco(false)"><span class="radio-nome">Cartão</span></label>
+                    <label class="radio-item"><input type="radio" name="pagamento" value="Dinheiro" onclick="toggleTroco(true)"><span class="radio-nome">Dinheiro</span></label>
+                </div>
+
+                <div id="area-troco" class="form-group" style="display: none; margin-top: 10px;">
+                    <label>Troco para quanto?</label>
+                    <input type="text" id="valor-troco" placeholder="Ex: 50,00">
+                </div>
+                
+                <div class="detalhes-preco" style="margin-top: 20px;">
+                    <div class="linha-valor">
+                        <span>Subtotal:</span>
+                        <span id="resumo-subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="linha-valor" id="linha-taxa">
+                        <span>Taxa de Entrega:</span>
+                        <span>R$ 5,00</span>
+                    </div>
+                    <div class="linha-valor total-final">
+                        <span>Total a Pagar:</span>
+                        <span id="resumo-total">R$ 0,00</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-adicionar btn-zap" onclick="finalizarPedidoZap()">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container">Mensagem aqui</div>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>
